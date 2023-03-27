@@ -9,7 +9,7 @@
     background-color:#918e8e;
     background-image: url(JWST_SMACS_J0723.jpeg);
     background-repeat: no-repeat;
-    background-size: 125%;
+    background-size: auto;
     background-position: 50% 30%;
     background-blend-mode:multiply;
     opacity: 0.7;
