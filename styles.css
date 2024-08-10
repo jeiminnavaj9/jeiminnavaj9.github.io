@@ -1,0 +1,362 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f0f0f0;
+    color: inherit;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Logo Styles */
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.logo p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.logo h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo h1 a:hover {
+    color: #007BFF;
+}
+
+/* Main Menu Styles */
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.main-menu ul li {
+    margin-left: 30px;
+}
+
+.main-menu ul li a {
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.main-menu ul li a:hover {
+    color: #007BFF;
+}
+
+/* Hero Section Styles (for Homepage) */
+.hero-section {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.25rem;
+    color: #333;
+}
+
+.hero-content p {
+    font-size: 1.125rem;
+    color: #555;
+}
+
+.cta {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cta:hover {
+    background-color: #0056b3;
+}
+
+/* About Section Styles (for About Me Page) */
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+
+.about-content {
+    width: 60%;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-info {
+    width: 35%;
+    margin-top: 70px;
+}
+
+.contact-info h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.contact-info a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: #0056b3;
+}
+
+/* Dr. David Goldberg Link (No underline and consistent color) */
+.no-underline:visited, 
+.no-underline {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: inherit;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.75rem;
+}
+
+/* Projects Section Styles */
+.projects-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.projects-section p {
+    font-size: 1.125rem;
+    color: #555;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-card {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 0;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card img {
+    max-width: 75px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.project-card-content {
+    flex-grow: 1;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.project-card p b {
+    font-weight: 600;
+}
+
+.project-card .project-date {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    border-color: #333;
+}
+
+/* Footer Fix for Consistency */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: inherit;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.project-card a img {
+    display: block;
+}
+
+.project-card a {
+    text-decoration: none;
+}
+
+.project-card a:hover img {
+    opacity: 0.8;
+}
+
+/* Support Section Styles */
+.support-section {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: inherit;
+}
+
+.support-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.support-section p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.support-section h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.support-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.support-section ul li {
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Theme Gallery Styles */
+.theme-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create a 3x3 grid */
+    gap: 20px; /* Space between grid items */
+    margin-bottom: 40px;
+}
+
+.theme-gallery-item {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center align the content */
+    text-align: center; /* Center text under the image */
+}
+
+.theme-gallery img {
+    width: 100px; /* Adjust the size of the images */
+    height: 100px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-gallery img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-gallery-item span {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin-top: 10px; /* Space between image and text */
+}
