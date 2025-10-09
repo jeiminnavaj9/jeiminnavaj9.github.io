@@ -17,26 +17,66 @@
             <ul>
                 <li><a href="about.html">About Me</a></li>
                 <li><a href="projects.html">Projects</a></li>
+                <!--<li><a href="subjects.html">Subjects</a></li>
                 <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="teaching.html">Teaching</a></li> -->
+                <li class="theme-toggle">
+                    <button id="theme-toggle" aria-label="Toggle color mode">
+                        <img id="theme-icon" src="images/dark_mode.png" alt="Switch to dark mode">
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main class="projects-section">
         <h2>Projects</h2>
-        <p>Here is a project I've worked on. Click on the image to learn more about it.</p>
+        <p>Here is a list of projects I've worked on. Click on the image to learn more about it.</p>
         
         <div class="projects-grid">
-            <div class="project-card">
-                <a href="dice_support_page.html">
-                    <img src="images/dice6.png" alt="Dice Rolling App Thumbnail">
-                </a>
+            <!-- Master's Thesis -->
+            <article class="project-card">
+                <a href="thesis.html" class="project-thumb" aria-label="Master's Thesis"></a>
                 <div class="project-card-content">
-                    <p><b>Dice by Phuti Cowrie:</b> A simple dice rolling app developed using Swift. This app allows users to roll a dice with a tap gesture.</p>
-                    <div class="project-date"><em>Aug 2024</em></div>
+                <h3>Master's Thesis</h3>
+                <p>I utilized JWST's multiband imaging data for galaxy clusters SMACSJ-0723, ABELL 2744, ABELL 370, and El Gordo. I estimated the weak lensing signals for the galaxies in the FOV using LENSER - a Python package developed by Dr. Evan J. Arena. Click on the overview to learn more about the project.</p>
+                <div class="project-meta">
+                    <span class="project-date">2022-2024</span>
+                    <span class="tags">
+                    <span class="tag">Cosmology</span>
+                    <span class="tag">Weak Lensing</span>
+                    <span class="tag">Galaxies</span>
+                    </span>
                 </div>
-            </div>
+                <div class="project-links">
+                    <a href="thesis.html">Overview</a>
+                    <!-- If/when you have it: -->
+                    <!-- <a href="files/masters_thesis.pdf" target="_blank" rel="noopener">PDF</a> -->
+                    <!-- <a href="https://github.com/yourrepo" target="_blank" rel="noopener">Code</a> -->
+                </div>
+                </div>
+            </article>
+
+            <!-- Teaching Assistant Experience -->
+            <article class="project-card">
+                <a href="ta_experience.html" class="project-thumb" aria-label="Teaching Assistant Experience"></a>
+                <div class="project-card-content">
+                <h3>Teaching Assistant</h3>
+                <!-- <p>Recitations & labs for PHYS 101/102/170/171/176; student support, problem design, grading, and office hours.</p> -->
+                 <p>While pursuing master's at Drexel University, I led recitations and labs </p> 
+                <div class="project-meta">
+                    <span class="project-date">2022-2024</span>
+                    <span class="tags">
+                    <span class="tag">Teaching</span>
+                    <span class="tag">Physics</span>
+                    <span class="tag">Mentoring</span>
+                    </span>
+                </div>
+                <div class="project-links">
+                    <a href="ta_experience.html">Highlights</a>
+                </div>
+                </div>
+            </article>
         </div>
     </main>
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Master's Thesis</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1><a href="index.html">Jeimin Garibnavajwala</a></h1>
+                <p>Welcome to my personal space</p>
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <!--<li><a href="subjects.html">Subjects</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="teaching.html">Teaching</a></li> -->
+                    <li class="theme-toggle">
+                        <button id="theme-toggle" aria-label="Toggle color mode">
+                            <img id="theme-icon" src="images/dark_mode.png" alt="Switch to dark mode">
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="projects-section">
+            <h2>Master's Thesis</h2>
+            <h3>Deriving True Lensing Signals By Minimizing Shape Noise using JWST Multi-band Observations</h3>
+            <p>Short abstract/summary here. Mention data (JWST), tools (LENSER), pipeline, and key results.</p>
+            <p><a href="files/Masters_Thesis.pdf" target="_blank" rel="noopener">Download PDF</a></p>
+            <h3>Highlights</h3>
+            <ul>
+                <li>Noise minimization approach comparing LENSER vs. your method</li>
+                <li>Convergence maps from shear & flexion (IFT)</li>
+                <li>Validation and key figures</li>
+            </ul>
+        </main>
+        <footer> <p>&copy; <span id="current-year"></span> Jeimin Garibnavajwala. All rights reserved. Last updated: <span id="last-updated"></span></p></footer>
+        <script src="script.js"></script>
+    </body>
+</html>

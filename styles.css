@@ -105,13 +105,21 @@ header {
     background-color: #0056b3;
 }
 
+.homepage-quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
 /* About Section Styles (for About Me Page) */
 .about-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 60px 20px;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     background-color: #f0f0f0;
 }
@@ -230,6 +238,7 @@ footer {
     color: #555;
     line-height: 1.6;
     margin-bottom: 10px;
+    text-align: justify;
 }
 
 .project-card p b {
@@ -360,3 +369,192 @@ footer {
     font-weight: 500;
     margin-top: 10px; /* Space between image and text */
 }
+
+/* Profile Photo Styles */
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* align at the top */
+    margin-top: 70px;
+    gap: 50px;
+}
+
+.info-block {
+    flex: 1; /* CV + Address takes available width */
+}
+
+.profile-photo {
+    margin-left: 10px;
+}
+
+.profile-photo img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== Theme Toggle button ===== */
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.theme-toggle img {
+  width: 21px;
+  height: 21px;
+  display:block;
+  opacity: 0.9;
+}
+.theme-toggle img:hover { opacity: 1; }
+
+/* ===== Theming via CSS variables ===== */
+:root {
+  --bg: #f0f0f0;
+  --text: #333;
+  --muted: #555;
+  --border: #e0e0e0;
+  --accent: #007BFF;
+}
+
+body.dark-mode {
+  --bg: #1e1f22;      /* soft matte dark gray background */
+  --text: #e5e5e5;    /* gentle off-white for main text */
+  --muted: #b0b0b0;   /* softer gray for secondary text */
+  --border: #2d2f34;  /* subtle gray borders */
+  --accent: #66aaff;  /* calm blue accent */
+}
+
+/* Base surfaces pick up variables (placed late to override earlier colors) */
+body, header, footer, .hero-section, .about-section, .projects-section, main {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Borders & section chrome */
+header, footer { border-color: var(--border); }
+.project-card { border-color: var(--text); }
+.project-card:hover { border-color: var(--text); }
+
+/* Headings */
+.hero-content h1,
+.about-section h2,
+.projects-section h2,
+.contact-info h3,
+.support-section h2,
+.support-section h3 {
+  color: var(--text);
+}
+
+/* Body text */
+p, .projects-section p, .project-card p, .support-section p {
+  color: var(--muted);
+}
+
+/* Links (respect your no-underline preference elsewhere) */
+a, .contact-info a, .no-underline, .no-underline:visited {
+  color: var(--accent);
+}
+
+/* CTA button picks up accent automatically */
+.cta { background-color: var(--accent); }
+.cta:hover { filter: brightness(0.9); }
+
+/* Make the right column (photo) breathe on wide screens */
+@media (min-width: 1024px) {
+  .contact-info { gap: 60px; }
+}
+
+/* Smooth theme transitions */
+@media (prefers-reduced-motion: no-preference) {
+  body.theme-animate,
+  body.theme-animate header,
+  body.theme-animate footer,
+  body.theme-animate main,
+  body.theme-animate .hero-section,
+  body.theme-animate .about-section,
+  body.theme-animate .projects-section,
+  body.theme-animate .project-card,
+  body.theme-animate .support-section,
+  body.theme-animate .contact-info a,
+  body.theme-animate .cta {
+    transition:
+      background-color 500ms ease,
+      color 500ms ease,
+      border-color 500ms ease,
+      box-shadow 500ms ease;
+  }
+
+  /* optional: make the toggle icon feel smoother too */
+  #theme-icon {
+    transition: opacity 300ms ease, transform 500ms ease;
+  }
+}
+
+/* September 27, 2025 */
+/* Make the projects layout feel richer */
+.projects-grid {
+  display: grid;
+  gap: 20px;
+}
+@media (min-width: 720px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1120px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card title spacing */
+.project-card h3 {
+  margin: 0 0 8px 0;
+  color: var(--text);
+  text-align: center;
+}
+
+/* Meta row */
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 8px 0 12px;
+}
+.project-date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  padding-right: 8px;
+  border-right: 1px solid var(--border);
+}
+
+/* Tags */
+.tags { display: inline-flex; gap: 8px; }
+.tag {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+/* Links inside cards */
+.project-links {
+  display: flex;
+  gap: 14px;
+}
+.project-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.project-links a:hover { filter: brightness(0.9); }
+
+/* Optional thumbnail (kept as a simple block so cards stay clean) */
+.project-thumb { display: none; }
+
