@@ -558,3 +558,19 @@ a, .contact-info a, .no-underline, .no-underline:visited {
 /* Optional thumbnail (kept as a simple block so cards stay clean) */
 .project-thumb { display: none; }
 
+/* === Projects: force vertical stack on all screen sizes === */
+.projects-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+}
+
+/* Section subtitles inside Projects */
+.proj-section-title {
+  margin: 40px 0 14px;
+  text-align: left;
+  font-size: 1.35rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+}
