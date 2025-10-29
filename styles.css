@@ -400,7 +400,7 @@ footer {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 10px;
 }
 .theme-toggle img {
   width: 21px;
@@ -573,4 +573,149 @@ a, .contact-info a, .no-underline, .no-underline:visited {
   color: var(--text);
   border-left: 3px solid var(--accent);
   padding-left: 10px;
+}
+
+/* === Social Icons (Homepage) === */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.social-icons a img {
+  width: 30px;
+  height: 30px;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  filter: brightness(0) invert(0); /* works for dark mode */
+}
+
+body.dark-mode .social-icons a img {
+  filter: brightness(0) invert(1); /* switch for dark background */
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN FIXES       */
+/* ============================= */
+
+/* Stack header elements on small screens */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .main-menu ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .main-menu ul li {
+    margin-left: 0;
+  }
+}
+
+/* About page responsive layout */
+@media (max-width: 900px) {
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .about-content,
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    gap: 30px;
+  }
+
+  .profile-photo img {
+    width: 200px;
+  }
+}
+
+/* Projects layout responsive */
+@media (max-width: 800px) {
+  .projects-section {
+    padding: 40px 15px;
+  }
+
+  .project-card {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .project-card img {
+    margin: 0 auto 15px;
+  }
+
+  .project-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Teaching Assistant (TA) page responsive */
+@media (max-width: 800px) {
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-card-content {
+    text-align: left;
+  }
+
+  .project-card p, .project-card ul {
+    font-size: 0.95rem;
+  }
+}
+
+/* Thesis page responsive */
+@media (max-width: 900px) {
+  .projects-section h2 {
+    font-size: 2rem;
+  }
+
+  .projects-section h3 {
+    font-size: 1.25rem;
+  }
+
+  .projects-section p,
+  .projects-section ul {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
+
+/* Footer centering fix */
+@media (max-width: 600px) {
+  footer p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    padding: 10px;
+  }
 }
