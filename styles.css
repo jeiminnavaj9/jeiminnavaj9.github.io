@@ -607,11 +607,18 @@ body.dark-mode .social-icons a img {
 /* Stack header elements on small screens */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding: 15px 20px;
   }
 
+  .logo a {
+    font-size: 1.1rem;
+  }
+
+  .logo p {
+    font-size: 0.8rem;
+  }
   .logo {
     margin-bottom: 10px;
   }
@@ -624,6 +631,15 @@ body.dark-mode .social-icons a img {
 
   .main-menu ul li {
     margin-left: 0;
+  }
+
+  .main-menu ul li a {
+    font-size: 0.825rem;
+  }
+
+  #theme-icon {
+    width:20px;
+    height: auto;
   }
 }
 
@@ -641,11 +657,10 @@ body.dark-mode .social-icons a img {
   }
 
   .contact-info {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
+    text-align: left;
     margin-top: 40px;
-    gap: 30px;
   }
 
   .profile-photo img {
