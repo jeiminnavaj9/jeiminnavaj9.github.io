@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+import headshot from '../assets/images/headshot.png';
+---
+
+<BaseLayout title="About" description="About Jeimin Garibnavajwala — physicist, researcher, and problem solver.">
+  <PageHeader eyebrow="About" title="A physicist who likes hard problems." />
+
+  <div class="container about">
+    <div class="prose text">
+      <p class="intro">
+        I'm Jeimin Garibnavajwala, a physicist by training and a problem solver at heart. My academic journey through
+        physics research, particularly in cosmology and weak gravitational lensing, has equipped me with strong
+        analytical, programming, and data-driven thinking skills.
+      </p>
+      <p>
+        After several years of research and teaching at Drexel University, I decided to transition from my Ph.D.
+        program to pursue a full-time career where I can apply my technical expertise and curiosity to real-world
+        problems. I have extensive experience with Python, data analysis, and scientific computation, and I'm passionate
+        about using these skills to draw insights from data and develop solutions that make an impact. My goal is to work
+        in an environment where analytical reasoning, coding, and innovation intersect, whether that's in data science,
+        research analysis, or technology development.
+      </p>
+      <p>
+        Beyond my professional interests, I enjoy exploring the deeper questions of physics and the universe, learning
+        new tools for data-driven exploration, and finding creative ways to connect science with everyday understanding.
+      </p>
+    </div>
+
+    <aside class="side">
+      <figure class="portrait">
+        <Image
+          src={headshot}
+          alt="Portrait of Jeimin Garibnavajwala"
+          widths={[360, 540, 720]}
+          sizes="(max-width: 860px) 80vw, 360px"
+          loading="eager"
+        />
+      </figure>
+
+      <dl class="facts">
+        <div>
+          <dt class="label">Location</dt>
+          <dd>{site.location}</dd>
+        </div>
+        <div>
+          <dt class="label">Background</dt>
+          <dd>M.S. Physics, Drexel University</dd>
+        </div>
+        <div>
+          <dt class="label">Curriculum Vitae</dt>
+          <dd><a href={site.cv} target="_blank" rel="noopener">View my CV ↗</a></dd>
+        </div>
+        <div>
+          <dt class="label">Elsewhere</dt>
+          <dd>
+            <a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+            <span class="ornament" aria-hidden="true"> · </span>
+            <a href={site.social.github} target="_blank" rel="noopener">GitHub</a>
+          </dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+
+  .intro {
+    font-size: 1.3em;
+    line-height: 1.5;
+  }
+
+  .side {
+    position: sticky;
+    top: 110px;
+  }
+
+  .portrait {
+    margin: 0 14px 14px 0;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 14px -14px -14px 14px;
+    border: 1px solid var(--ornament);
+    opacity: 0.6;
+    z-index: -1;
+  }
+
+  .portrait :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 20%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .facts {
+    margin: 3rem 0 0;
+  }
+
+  .facts div {
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .facts div:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .facts dt {
+    margin-bottom: 0.3rem;
+  }
+
+  .facts dd {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 860px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+    .side {
+      position: static;
+      order: -1;
+      max-width: 340px;
+    }
+  }
+</style>

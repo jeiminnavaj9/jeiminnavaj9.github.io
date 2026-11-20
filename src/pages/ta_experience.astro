@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const courses = [
+  {
+    code: 'PHYS 102',
+    name: 'Fundamentals of Physics II',
+    role: 'Recitation & Lab',
+    term: 'Fall 2024',
+    points: [
+      'Led problem-solving recitations covering electrostatics, capacitors, DC circuits, conductors/semiconductors, magnetism, and electromagnetic induction.',
+      'Prepared and delivered pre-lab mini-lectures; demonstrated experiments; supervised lab work; graded reports.',
+    ],
+  },
+  {
+    code: 'PHYS 101',
+    name: 'Fundamentals of Physics I',
+    role: 'Recitation',
+    term: 'Spring 2023',
+    points: [
+      'Facilitated recitations on mechanics: kinematics, Newton’s laws, forces, energy, and momentum.',
+      'Emphasized structured problem-solving strategies to build conceptual understanding.',
+    ],
+  },
+  {
+    code: 'PHYS 170',
+    name: 'Electricity and Motion',
+    role: 'Recitation',
+    term: 'Fall 2022',
+    points: [
+      'Taught physics fundamentals to non-science majors, connecting mechanics and electricity to real-world applications.',
+      'Fostered a collaborative, discussion-first classroom environment.',
+    ],
+  },
+  {
+    code: 'PHYS 171',
+    name: 'Electricity and Motion',
+    role: 'Computational Lab',
+    term: 'Fall 2022 & 2023',
+    points: ['Guided students through simulations on Newton’s laws, energy conservation, Coulomb’s law, and basic circuits.'],
+  },
+  {
+    code: 'PHYS 176',
+    name: 'Light and Sound',
+    role: 'Computational Lab',
+    term: 'Winter 2022',
+    points: ['Introduced optics and wave phenomena using conceptual simulations and guided exploration.'],
+  },
+];
+---
+
+<BaseLayout
+  title="Teaching Assistant"
+  description="Teaching Assistant experience at Drexel University: recitations, computational and experimental physics labs."
+>
+  <PageHeader
+    back={{ href: '/projects', label: 'Projects' }}
+    eyebrow="Teaching · Drexel University · 2022 – 2024"
+    title="Teaching Assistant"
+    subtitle="I’ve supported introductory and conceptual physics courses through recitations, computational and hands-on laboratories, and student mentoring."
+  />
+
+  <section class="container" aria-labelledby="courses-title">
+    <h2 id="courses-title" class="section-title">Courses &amp; roles</h2>
+
+    <ol class="courses">
+      {
+        courses.map((c) => (
+          <li class="course">
+            <div class="course-head">
+              <p class="code">{c.code}</p>
+              <p class="label">{c.term}</p>
+            </div>
+            <div class="course-body">
+              <h3>{c.name}</h3>
+              <p class="role">{c.role}</p>
+              <ul>
+                {c.points.map((pt) => (
+                  <li>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+    font-weight: 350;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .courses {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .course {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .course-head p {
+    margin: 0;
+  }
+
+  .code {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .course-body {
+    max-width: var(--measure);
+  }
+
+  h3 {
+    font-size: 1.55rem;
+  }
+
+  .role {
+    margin: 0.35rem 0 1rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1em;
+    color: var(--ink-soft);
+  }
+
+  ul li + li {
+    margin-top: 0.4em;
+  }
+
+  ul li::marker {
+    color: var(--ornament);
+  }
+
+  @media (max-width: 760px) {
+    .course {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .course-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .code {
+      margin-bottom: 0 !important;
+    }
+  }
+</style>

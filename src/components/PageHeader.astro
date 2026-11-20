@@ -1,0 +1,85 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  back?: { href: string; label: string };
+}
+const { eyebrow, title, subtitle, back } = Astro.props;
+---
+
+<header class="page-header container">
+  {
+    back && (
+      <a class="back label reveal" href={back.href}>
+        <span aria-hidden="true">←</span> {back.label}
+      </a>
+    )
+  }
+  {eyebrow && <p class="label reveal">{eyebrow}</p>}
+  <h1 class="reveal reveal-2">{title}</h1>
+  {subtitle && <p class="subtitle reveal reveal-3">{subtitle}</p>}
+  <slot />
+  <div class="rule reveal reveal-4" aria-hidden="true"><span class="ornament">✦</span></div>
+</header>
+
+<style>
+  .page-header {
+    padding-top: clamp(3.5rem, 9vw, 7rem);
+  }
+
+  .back {
+    display: inline-flex;
+    gap: 0.5em;
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+
+  .back:hover {
+    color: var(--accent);
+  }
+
+  .label {
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 1.6rem + 4.2vw, 4.75rem);
+    font-weight: 350;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    max-width: 18ch;
+  }
+
+  .subtitle {
+    margin: 1.5rem 0 0;
+    max-width: 52ch;
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: clamp(2.5rem, 6vw, 4rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+    font-size: 0.7rem;
+  }
+
+  .rule::before,
+  .rule::after {
+    content: '';
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .rule::before {
+    width: 3rem;
+  }
+
+  .rule::after {
+    flex: 1;
+  }
+</style>

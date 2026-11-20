@@ -1,0 +1,78 @@
+---
+import { site } from '../data/site';
+
+const built = new Date();
+const year = built.getFullYear();
+const updated = built.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <p class="sign">
+      <span class="ornament" aria-hidden="true">✦</span>
+      &copy; {year} {site.name}
+    </p>
+    <ul class="links">
+      <li><a href={site.social.github} target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href={site.cv} target="_blank" rel="noopener">CV</a></li>
+    </ul>
+    <p class="updated">Last updated {updated}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(4rem, 10vw, 8rem);
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding-block: 2rem 2.5rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .sign {
+    display: flex;
+    gap: 0.6em;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

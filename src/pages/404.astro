@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="Page not found">
+  <PageHeader
+    eyebrow="404"
+    title="Lost in deep space."
+    subtitle="The page you were looking for has drifted out of view."
+  >
+    <a class="btn btn--solid home" href="/">Return home <span class="arrow" aria-hidden="true">→</span></a>
+  </PageHeader>
+</BaseLayout>
+
+<style>
+  .home {
+    margin-top: 2.25rem;
+  }
+</style>

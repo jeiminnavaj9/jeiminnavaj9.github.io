@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { academic, independent, type Project } from '../data/projects';
+
+const groups: { numeral: string; title: string; items: Project[] }[] = [
+  { numeral: 'I', title: 'Academic projects & experience', items: academic },
+  { numeral: 'II', title: 'Independent projects', items: independent },
+];
+---
+
+<BaseLayout title="Projects" description="Research, teaching, and independent projects by Jeimin Garibnavajwala.">
+  <PageHeader
+    eyebrow="Work"
+    title="Projects"
+    subtitle="Some of the things I've built and worked on. Academic work comes first, followed by independent projects."
+  />
+
+  <div class="container">
+    {
+      groups.map((g) => (
+        <section class="group" aria-labelledby={`g-${g.numeral}`}>
+          <h2 id={`g-${g.numeral}`} class="group-title">
+            <span class="numeral">{g.numeral}.</span> {g.title}
+          </h2>
+
+          {g.items.map((p) => (
+            <article class="entry">
+              <div class="entry-meta">
+                <p class="label period">{p.period}</p>
+                <p class="kind">{p.kind}</p>
+              </div>
+              <div class="entry-body">
+                <h3>
+                  <a
+                    href={p.href}
+                    target={p.external ? '_blank' : undefined}
+                    rel={p.external ? 'noopener' : undefined}
+                  >
+                    {p.title}
+                  </a>
+                </h3>
+                <p class="desc">{p.description}</p>
+                <div class="entry-foot">
+                  <ul class="tags">
+                    {p.tags.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                  <a
+                    class="text-link"
+                    href={p.href}
+                    target={p.external ? '_blank' : undefined}
+                    rel={p.external ? 'noopener' : undefined}
+                  >
+                    {p.linkLabel} <span class="arrow" aria-hidden="true">{p.external ? '↗' : '→'}</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .group + .group {
+    margin-top: clamp(4rem, 9vw, 6.5rem);
+  }
+
+  .group-title {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+    font-weight: 350;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .numeral {
+    font-style: italic;
+    color: var(--accent);
+    margin-right: 0.3em;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(2rem, 5vw, 3rem) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .entry-meta p {
+    margin: 0;
+  }
+
+  .period {
+    color: var(--accent);
+  }
+
+  .kind {
+    margin-top: 0.5rem !important;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--ink-faint);
+  }
+
+  .entry-body {
+    max-width: var(--measure);
+  }
+
+  h3 {
+    font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem);
+    font-weight: 380;
+    margin-bottom: 1rem;
+  }
+
+  h3 a {
+    text-decoration: none;
+  }
+
+  .desc {
+    color: var(--ink-soft);
+  }
+
+  .entry-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 1.75rem;
+  }
+
+  @media (max-width: 760px) {
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .entry-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .kind {
+      margin-top: 0 !important;
+    }
+  }
+</style>

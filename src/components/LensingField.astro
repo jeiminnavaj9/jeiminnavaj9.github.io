@@ -1,0 +1,111 @@
+---
+/**
+ * Decorative illustration of a strong/weak lensing field: a foreground lens,
+ * its Einstein ring, a few tangential arcs, and background galaxies whose
+ * shapes are stretched tangentially — more strongly the closer they sit to the ring.
+ */
+const C = 200;
+const R_E = 108; // Einstein radius
+
+// Deterministic pseudo-random so the build output is stable.
+let seed = 7;
+const rand = () => {
+  seed = (seed * 16807) % 2147483647;
+  return (seed - 1) / 2147483646;
+};
+
+const galaxies = Array.from({ length: 34 }, () => {
+  const theta = rand() * Math.PI * 2;
+  const r = 70 + rand() * 120;
+  const nearness = Math.max(0, 1 - Math.abs(r - R_E) / 80);
+  const size = 1.6 + rand() * 1.8;
+  return {
+    cx: (C + r * Math.cos(theta)).toFixed(1),
+    cy: (C + r * Math.sin(theta)).toFixed(1),
+    rx: (size * (1 + nearness * 2.6)).toFixed(2),
+    ry: (size * (1 - nearness * 0.45)).toFixed(2),
+    rot: ((theta * 180) / Math.PI + 90).toFixed(1),
+    o: (0.35 + rand() * 0.5).toFixed(2),
+  };
+});
+
+const arc = (r: number, a1: number, a2: number) => {
+  const p = (a: number) => {
+    const t = (a * Math.PI) / 180;
+    return `${(C + r * Math.cos(t)).toFixed(1)} ${(C + r * Math.sin(t)).toFixed(1)}`;
+  };
+  return `M${p(a1)} A${r} ${r} 0 0 1 ${p(a2)}`;
+};
+
+const arcs = [
+  { d: arc(R_E, -62, -28), w: 3.2 },
+  { d: arc(R_E, 148, 186), w: 2.6 },
+  { d: arc(R_E + 2, 58, 74), w: 1.8 },
+  { d: arc(R_E - 1, 236, 248), w: 1.6 },
+];
+---
+
+<svg class="lensing" viewBox="0 0 400 400" role="img" aria-label="Illustration of a gravitational lens bending the light of background galaxies">
+  <defs>
+    <radialGradient id="lens-glow">
+      <stop offset="0" stop-color="var(--ornament)" stop-opacity="0.55"></stop>
+      <stop offset="0.35" stop-color="var(--ornament)" stop-opacity="0.12"></stop>
+      <stop offset="1" stop-color="var(--ornament)" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  <g class="orbits" fill="none" stroke="var(--rule-strong)" stroke-width="0.75">
+    <circle cx={C} cy={C} r="190" stroke-dasharray="1 5"></circle>
+    <circle cx={C} cy={C} r="150"></circle>
+    <circle cx={C} cy={C} r="66" stroke-dasharray="2 4"></circle>
+  </g>
+
+  <circle cx={C} cy={C} r={R_E} fill="none" stroke="var(--accent)" stroke-width="0.9" opacity="0.55"></circle>
+
+  <g class="field">
+    {
+      galaxies.map((g) => (
+        <ellipse
+          cx={g.cx}
+          cy={g.cy}
+          rx={g.rx}
+          ry={g.ry}
+          transform={`rotate(${g.rot} ${g.cx} ${g.cy})`}
+          fill="var(--ink-soft)"
+          opacity={g.o}
+        />
+      ))
+    }
+  </g>
+
+  <g fill="none" stroke="var(--accent)" stroke-linecap="round">
+    {arcs.map((a) => <path d={a.d} stroke-width={a.w} />)}
+  </g>
+
+  <circle cx={C} cy={C} r="60" fill="url(#lens-glow)"></circle>
+  <circle cx={C} cy={C} r="5" fill="var(--ornament)"></circle>
+</svg>
+
+<style>
+  .lensing {
+    width: 100%;
+    overflow: visible;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .orbits {
+      transform-origin: 200px 200px;
+      animation: drift 160s linear infinite;
+    }
+    .field {
+      transform-origin: 200px 200px;
+      animation: drift 400s linear infinite reverse;
+    }
+  }
+
+  @keyframes drift {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

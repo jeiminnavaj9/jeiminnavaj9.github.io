@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const stages = [
+  {
+    title: 'Image processing',
+    body: 'Utilized the official <b>JWST pipeline</b> to align World Coordinate Systems (WCS), mosaic multi-band exposures, and resample them onto a common pixel grid.',
+  },
+  {
+    title: 'Shape measurement',
+    body: 'Employed the JWST source catalog to generate <b>postage stamps</b> for each galaxy, which were then analyzed with <b>LENSER</b> to estimate shear and flexion components.',
+  },
+  {
+    title: 'Mass reconstruction',
+    body: "Implemented <b>Kaiser &amp; Squires' Fourier inversion</b> technique to derive convergence maps from shear data and the <b>BGRT Fourier method</b> to reconstruct convergence from flexion measurements.",
+  },
+];
+---
+
+<BaseLayout
+  title="Master's Thesis"
+  description="Deriving true lensing signals by minimizing shape noise using JWST multi-band observations. M.S. thesis, Drexel University."
+>
+  <PageHeader
+    back={{ href: '/projects', label: 'Projects' }}
+    eyebrow="Master's Thesis · Drexel University · 2022 – 2024"
+    title="Deriving True Lensing Signals by Minimizing Shape Noise"
+    subtitle="Using JWST multi-band observations"
+  >
+    <a class="btn btn--solid doi" href="https://doi.org/10.17918/00010697" target="_blank" rel="noopener">
+      Read the thesis <span class="arrow" aria-hidden="true">↗</span>
+    </a>
+  </PageHeader>
+
+  <article class="container">
+    <div class="prose">
+      <p class="intro">
+        This project was part of my M.S. in Physics at Drexel University, conducted under the supervision of
+        <a href="https://drexel.edu/coas/faculty-research/faculty-directory/physics/goldberg-david/" target="_blank" rel="noopener"
+          >Dr. David Goldberg</a
+        >. The goal was to use <b>multi-band flexion measurements</b> to minimize intrinsic shape noise and obtain a more
+        accurate reconstruction of the <b>matter distribution</b> in galaxy clusters.
+      </p>
+
+      <h2>Background</h2>
+      <p>
+        In weak gravitational lensing, the light from distant galaxies is distorted by massive intervening structures. The
+        first-order distortion, known as <b>shear</b>, causes galaxies to appear slightly stretched, while the
+        second-order distortion, called <b>flexion</b>, captures subtle curvature or bending in their light profiles.
+        Flexion is particularly sensitive to small-scale variations in the lensing potential, making it a powerful but
+        noise-sensitive probe of substructure within galaxy clusters.
+      </p>
+      <p>
+        In principle, the induced flexion depends solely on the <b>mass of the deflector</b> and should appear identical
+        across different photometric bands. However, because galaxies exhibit distinct morphologies across band-passes,
+        the measured flexion varies, introducing <b>shape noise</b>. To mitigate this, I employed the
+        <b>multi-band imaging capability of the James Webb Space Telescope (JWST)</b>, whose wide set of filters allows
+        precise cross-band analysis of individual galaxy shapes.
+      </p>
+
+      <h2>Data and pipeline</h2>
+      <p>
+        The galaxy clusters <b>SMACS J0723</b> and <b>Abell 2744</b> were chosen as test-beds because of their
+        well-studied lensing environments and high-quality JWST imaging data. I acquired <b>Level-2 images</b> from the
+        MAST portal, corresponding to calibrated exposures of different cluster regions in multiple NIRCam filters. I then
+        developed a three-stage <b>Python pipeline</b>:
+      </p>
+    </div>
+
+    <ol class="stages">
+      {
+        stages.map((s, i) => (
+          <li>
+            <span class="label">Stage {i + 1}</span>
+            <h3>{s.title}</h3>
+            <p set:html={s.body} />
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="prose">
+      <h2>Results and impact</h2>
+      <p>
+        By combining flexion measurements across multiple bands, the approach effectively
+        <b>reduced intrinsic shape noise</b> and produced convergence maps that better reflected the true underlying mass
+        distribution. The resulting shear- and flexion-based convergence fields showed consistent structural features,
+        suggesting the reliability of the multi-band approach for future lensing analyses. This work highlights JWST's
+        unique ability to refine <b>weak lensing precision</b> on small scales.
+      </p>
+
+      <p class="cta-row">
+        <a class="text-link" href="https://doi.org/10.17918/00010697" target="_blank" rel="noopener">
+          View the thesis at Drexel University <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .doi {
+    margin-top: 2.25rem;
+  }
+
+  .intro {
+    font-size: 1.25em;
+    line-height: 1.55;
+  }
+
+  .container > .prose:first-child > h2:first-child {
+    margin-top: 0;
+  }
+
+  .stages {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .stages li {
+    background: var(--bg-elev);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .stages .label {
+    color: var(--accent);
+  }
+
+  .stages h3 {
+    font-size: 1.4rem;
+    margin: 0.6rem 0 0.8rem;
+  }
+
+  .stages p {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+
+  .cta-row {
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .stages {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
